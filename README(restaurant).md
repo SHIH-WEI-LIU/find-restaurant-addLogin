@@ -20,8 +20,11 @@ If you are interested in above please try it to discover which do you like !!!
 - User can click button to create their interested restaurant
 
 ### Searching
-- Type the title of the restaurants in Searc bar
+- Type the title of the restaurants in Search bar
 - You can search restaurants by its English name or Chinese name or category of food contry
+
+### Sort
+- User can sort restaurants by its name 、category 、location 
 
 ### Detail
 - User can understand the restaurant detail after click the Detail link
@@ -37,3 +40,6 @@ If you are interested in above please try it to discover which do you like !!!
 - template engine -> Using template engine to covert files from html-like to html for browser
 - router -> Using http GET POST etc.. to do route
 - MONGODB -> Using mongoose  help app.js  connect to database
+
+### RESTful 
+Compared to previous version, this version use the RESTful design pattern to reconstruction  routes of  app.js
