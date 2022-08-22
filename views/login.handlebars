@@ -2,7 +2,7 @@
 <div class="container" id="container">
   {{!-- Create Account --}}
   <div class="form-container sign-up-container">
-    <form class="login-form" action="/create" method="POST">
+    <form class="login-form" action="/users/signUp" method="POST">
       <h1 class="login-h1">Create Account</h1>
       <div class="social-container">
         <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -10,39 +10,24 @@
         <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span class="login-span">or use your email for registration</span>
-      <input class="login-input" type="text" placeholder="Name" name="firstName">
-      <input class="login-input" type="email" placeholder="Email" name="email" required>
-      <input class="login-input" type="password" placeholder="Password" name="password" required>
-      <input class="login-input" type="password" name="confirmPassword"  placeholder="Confirm Password"
+      <input class="login-input" type="text" placeholder="Name" name="firstName" value="{{ name }}">
+      <input class="login-input" type="email" placeholder="Email" name="email" value="{{ email }}" required>
+      <input class="login-input" type="password" placeholder="Password" name="password" value="{{ password }}" required>
+      <input class="login-input" type="password" name="confirmPassword" placeholder="Confirm Password"
         value="{{ confirmPassword }}" required>
       <button class="login-btn" type="submit">Sign Up</button>
     </form>
   </div>
   {{!-- Sign in --}}
-  {{#if firstName}}
   <div class="form-container sign-in-container">
-    <form class="login-form" action="/signIn" method="POST">
-      <h1>Sign In Suceesfully</h1>
-      <div class="social-container">
-        <a href="https://www.facebook.com/" target="_blank" class="social login-a"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://myaccount.google.com/" target="_blank" class="social login-a"><i class="fab fa-google-plus-g"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social login-a"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span class="login-span">you are logged in</span>
-      <input class="login-input" type="email" placeholder="Email" name="email" value="{{email}}" disabled>
-      <input class="login-input" type="password" placeholder="Password" name="password" disabled>
-      <a class="login-a" href="/"><button>BACK</button></a>
-    </form>
-  </div>
-
-  {{else}}
-  <div class="form-container sign-in-container">
-    <form class="login-form" action="/signIn" method="POST">
+    <form class="login-form" action="/users/signIn" method="POST">
       <h1 class="login-h1">Sign in</h1>
       <div class="social-container">
         <a href="https://www.facebook.com/" target="_blank" class="social login-a"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://myaccount.google.com/" target="_blank" class="social login-a"><i class="fab fa-google-plus-g"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social login-a"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://myaccount.google.com/" target="_blank" class="social login-a"><i
+            class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="social login-a"><i
+            class="fab fa-linkedin-in"></i></a>
       </div>
       <span class="login-span">or use your account</span>
       <input class="login-input" type="email" placeholder="Email" name="email" required>
@@ -51,7 +36,6 @@
       <button class="login-btn" type="submit">Sign In</button>
     </form>
   </div>
-  {{/if}}
 
   <div class="overlay-container">
     <div class="overlay">
