@@ -19,14 +19,15 @@
   <header>
     <!-- navigation -->
     <nav class="navbar navbar-light bg-light">
-      <div class="container">
+      <div class="containers">
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
-
+        {{#if isAuthenticated}}
         <a href="/restaurants/new"><i class="fa-solid fa-folder-plus">新增餐廳</i></a>
+        {{/if}}
       </div>
     </nav>
     <div class="banner"></div>
@@ -35,9 +36,17 @@
   <!-- partial templates will replace the part of "body" here -->
   {{{ body }}}
 
+  
   <!-- include javascript files here -->
   <script src="/javascripts/popper.js"></script>
   <script src="/javascripts/bootstrap.js"></script>
 </body>
+
+<footer>
+  <p class="login-p">
+    We wish you have a nice day !
+  </p>
+
+</footer>
 
 </html>
