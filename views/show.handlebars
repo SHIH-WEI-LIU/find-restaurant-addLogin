@@ -1,7 +1,9 @@
 <!-- ./views/show.handlebars -->
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}
   <a href="/restaurants/{{ restaurant._id }}/edit" style="color:white ;">
-    <button type="submit" class="btn btn-primary">edit</button>
+    <button type="submit" class="btn btn-danger">
+      <i class="fa-solid fa-pencil"></i> edit
+    </button>
   </a>
 </h1>
 <div class="container">

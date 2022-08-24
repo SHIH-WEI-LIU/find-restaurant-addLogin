@@ -1,12 +1,20 @@
 const express = require('express')
-const restaurant = require('../../models/restaurant')
 const router = express.Router()
 const User = require('../../models/user')//引入建立好的 User model
+const passport = require('passport')
 
 //users登入路由
 router.get('/login', (req, res) => {
   res.render('login')
 })
+
+//signIn
+// 加入 middleware，驗證 request 登入狀態
+router.post('/signIn', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
+
 
 //signUp
 router.post('/signUp', (req, res) => {
@@ -38,11 +46,6 @@ router.post('/signUp', (req, res) => {
     .catch(err => console.log(err))
 })
 
-//signIn
-// 加入 middleware，驗證 request 登入狀態
-router.post('/signIn', (req, res) => {
-  res.render('index')
-})
 
 //logout
 router.get('/logout', (req, res) => {

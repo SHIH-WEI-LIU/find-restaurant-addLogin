@@ -1,5 +1,5 @@
 {{!-- index.hbs --}}
-<div class="container" id="container">
+<div class="login-container" id="container">
   {{!-- Create Account --}}
   <div class="form-container sign-up-container">
     <form class="login-form" action="/users/signUp" method="POST">
@@ -10,7 +10,7 @@
         <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span class="login-span">or use your email for registration</span>
-      <input class="login-input" type="text" placeholder="Name" name="firstName" value="{{ name }}">
+      <input class="login-input" type="text" placeholder="Name" name="name" value="{{ name }}">
       <input class="login-input" type="email" placeholder="Email" name="email" value="{{ email }}" required>
       <input class="login-input" type="password" placeholder="Password" name="password" value="{{ password }}" required>
       <input class="login-input" type="password" name="confirmPassword" placeholder="Confirm Password"
@@ -45,24 +45,11 @@
         <button class="ghost login-btn" id="signIn" onclick="switches()">Sign In</button>
       </div>
 
-
-
-      {{#if firstName}}
-      <div class="overlay-panel overlay-right">
-        <h1 class="login-h1">Hello, {{firstName}}!!</h1>
-        <p class="login-p">Welcome Back!</p>
-        <a class="login-a" href="https://todo-list-from-heroku.herokuapp.com/">
-          <button class="ghost login-btn">Enter</button>
-        </a>
-      </div>
-
-      {{else}}
       <div class="overlay-panel overlay-right">
         <h1 class="login-h1">Hello, Friend!</h1>
         <p class="login-p">Enter your personal details and start journey with us</p>
         <button class="ghost login-btn" id="signUp" onclick="switches()">Sign Up</button>
       </div>
-      {{/if}}
 
     </div>
   </div>

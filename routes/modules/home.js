@@ -7,18 +7,21 @@ const Restaurant = require('../../models/restaurant')
 
 //首頁路由
 router.get('/', (req, res) => {
-  Restaurant.find() // 取出  model 裡的所有資料
+  const userId = req.user._id
+  Restaurant.find({ userId }) // 取出 userId 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .sort({ _id: 'asc' }) //依照建立順序來排列出來
     .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
     .catch(error => console.error(error)) // 錯誤處理
 })
 //首頁search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
+  const userId = req.user._id
   if (keyword.length === 0) {
     return res.redirect("/")
   }
-  Restaurant.find() // 取出  model 裡的所有資料
+  Restaurant.find({ userId }) // 取出  model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .then(restaurants => {
       const filterRestaurants = restaurants.filter(restaurant =>
@@ -33,15 +36,17 @@ router.get('/search', (req, res) => {
 })
 //asc order
 router.get('/asc', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
-    .sort({ name: 'asc' }) 
+    .sort({ name: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
 //reverse order
 router.get('/desc', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
     .sort({ name: 'desc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -49,7 +54,8 @@ router.get('/desc', (req, res) => {
 })
 //category order
 router.get('/category', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
     .sort({ category: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -57,7 +63,8 @@ router.get('/category', (req, res) => {
 })
 //location order
 router.get('/location', (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
     .sort({ location: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))

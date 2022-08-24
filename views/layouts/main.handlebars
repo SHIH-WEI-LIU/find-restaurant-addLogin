@@ -18,15 +18,24 @@
 <body>
   <header>
     <!-- navigation -->
-    <nav class="navbar navbar-light bg-light">
-      <div class="containers">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <div class="container">
         <a class="navbar-brand" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-          我的餐廳清單
+          {{#if isAuthenticated}}{{user.name}}'s {{/if}}餐廳清單
         </a>
+      </div>
+      <div>
         {{#if isAuthenticated}}
-        <a href="/restaurants/new"><i class="fa-solid fa-folder-plus">新增餐廳</i></a>
+        <a href="/restaurants/new" class="btn btn-outline-danger">
+          <i class="fa-solid fa-folder-plus"></i> 新增餐廳
+        </a>
+        {{/if}}
+        {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-danger">
+          Logout <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
         {{/if}}
       </div>
     </nav>
@@ -36,17 +45,17 @@
   <!-- partial templates will replace the part of "body" here -->
   {{{ body }}}
 
-  
+
   <!-- include javascript files here -->
   <script src="/javascripts/popper.js"></script>
   <script src="/javascripts/bootstrap.js"></script>
+  <script src="https://kit.fontawesome.com/10b13ec982.js" crossorigin="anonymous"></script>
 </body>
 
 <footer>
   <p class="login-p">
     We wish you have a nice day !
   </p>
-
 </footer>
 
 </html>

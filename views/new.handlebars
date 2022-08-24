@@ -1,47 +1,71 @@
-<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
-<div class="container">
+<h1 class="mb-10 restaurant-create-title" style="color:black ;">新增餐廳</h1>
+<div class="create-container">
   <form action="/restaurants" method="POST">
-    <div class="mb-3">
+    <div class="mb-3 pt-3">
       <label for="name" class="form-label">店名<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name" placeholder="店名" name="name" required />
+      <div class="d-flex">
+        <input type="text" class="form-control " id="name" placeholder="店名" name="name" required />
+        <button onclick="document.getElementById('name').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="name_en" class="form-label">英文店名<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="name_en" placeholder="The Name Of Restaurant" name="name_en"
-        required />
+      <div class="d-flex">
+        <input type="text" class="form-control" id="name_en" placeholder="The Name Of Restaurant" name="name_en"
+          required />
+        <button onclick="document.getElementById('name_en').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="category" class="form-label">分類<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="category" placeholder="美式、中東料理、日本料理..." list="categoryOptions"
-        name="category" required />
-      {{! 使用datalist，讓使用者可選擇或自行輸入 }}
-      <datalist id="categoryOptions">
-        <option>美式</option>
-        <option>咖啡</option>
-        <option>中東料理</option>
-        <option>日本料理</option>
-        <option>義式餐廳</option>
-      </datalist>
+      <div class="d-flex">
+        <input type="text" class="form-control" id="category" placeholder="美式、中東料理、日本料理..." list="categoryOptions"
+          name="category" required />
+        <button onclick="document.getElementById('category').value = ''" class="btn btn-outline-secondary">X</button>
+        {{! 使用datalist，讓使用者可選擇或自行輸入 }}
+        <datalist id="categoryOptions">
+          <option>美式</option>
+          <option>咖啡</option>
+          <option>中東料理</option>
+          <option>日本料理</option>
+          <option>義式餐廳</option>
+        </datalist>
+      </div>
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">圖片連結<span class="text-danger">*</span></label>
-      <input type="url" class="form-control" id="image" name="image" required />
+      <div class="d-flex">
+        <input type="url" class="form-control" id="image" name="image" required />
+        <button onclick="document.getElementById('image').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="location" class="form-label">地址<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" id="location" placeholder="請輸入餐廳地址" name="location" required />
+      <div class="d-flex">
+        <input type="text" class="form-control" id="location" placeholder="請輸入餐廳地址" name="location" required />
+        <button onclick="document.getElementById('location').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="phone" class="form-label">電話<span class="text-danger">*</span></label>
-      <input type="tel" class="form-control" id="phone" placeholder="請輸入電話號碼" name="phone" required />
+      <div class="d-flex">
+        <input type="tel" class="form-control" id="phone" placeholder="請輸入電話號碼" name="phone" required />
+        <button onclick="document.getElementById('phone').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="google_map" class="form-label">Google地圖連結<span class="text-danger">*</span></label>
-      <input type="url" class="form-control" id="google_map" name="google_map" required />
+      <div class="d-flex">
+        <input type="url" class="form-control" id="google_map" name="google_map" required />
+        <button onclick="document.getElementById('google_map').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="rating" class="form-label">評分<span class="text-danger">*</span></label>
-      <input type="number" class="form-control" id="rating" min="0" max="5" step="0.1" name="rating" required />
+      <div class="d-flex">
+        <input type="number" class="form-control" id="rating" min="0" max="5" step="0.1" name="rating" required />
+        <button onclick="document.getElementById('rating').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">敘述<span class="text-danger">*</span></label>
