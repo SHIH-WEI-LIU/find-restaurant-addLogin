@@ -18,39 +18,77 @@ router.post('/signIn', passport.authenticate('local', {
 
 //signUp
 router.post('/signUp', (req, res) => {
-  // 取得註冊表單參數
   const { name, email, password, confirmPassword } = req.body
-  // 檢查使用者是否已經註冊
-  User.findOne({ email })
-    .then(user => {
-      // 如果已經註冊：退回原本畫面
-      if (user) {
-        console.log('User already exists.')
-        res.render('login', {
-          name,
-          email,
-          password,
-          confirmPassword
-        })
-      } else {
-        // 如果還沒註冊：寫入資料庫
-        return User.create({
-          name,
-          email,
-          password
-        })
-          .then(() => res.redirect('/'))
-          .catch(err => console.log(err))
-      }
+  const errors = []
+  if (!name || !email || !password || !confirmPassword) {
+    errors.push({ message: '所有欄位都是必填。' })
+  }
+  if (password !== confirmPassword) {
+    errors.push({ message: '密碼與確認密碼不符！' })
+  }
+  if (errors.length) {
+    return res.render('register', {
+      errors,
+      name,
+      email,
+      password,
+      confirmPassword
     })
-    .catch(err => console.log(err))
+  }
+  User.findOne({ email }).then(user => {
+    if (user) {
+      errors.push({ message: '這個Email已註冊過。' })
+      return res.render('register', {
+        errors,
+        name,
+        email,
+        password,
+        confirmPassword
+      })
+    }
+    return User.create({
+      name,
+      email,
+      password
+    })
+      .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
+  })
 })
 
 
 //logout
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('success_msg', '你已經成功登出囉！')
   res.redirect('/users/login')
 })
+
+//users account
+router.get('/account', (req, res) => {
+  res.render('account')
+})
+//user post
+router.put('/account', (req, res) => {
+  const { name, email, editPassword, prePassword } = req.body
+  const errors = []
+  if (editPassword === prePassword) {
+    errors.push({ message: '與先前密碼相同！' })
+  }
+  if (errors.length) {
+    return res.render('account', {
+      errors,
+      name,
+      email,
+      editPassword,
+      prePassword
+    })
+  }
+  req.flash('success_msg', '你已經修改成功囉！')
+  return User.findOneAndUpdate({ email, prePassword, ...req.body }) //找到對應的資料後整個一起更新
+    .then(() => res.redirect('/users/login'))
+    .catch(error => console.log(error))
+})
+
 
 module.exports = router

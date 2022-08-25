@@ -1,0 +1,51 @@
+<h1 class="mb-10 restaurant-edit-title" style="color:black ;">編輯個人資訊</h1>
+<div class="create-container">
+  <form action="/users/account?_method=PUT" method="POST">
+    {{>message}}
+    <div class="mb-3 pt-3">
+      <label for="name" class="form-label">姓名<span class="text-danger">*</span></label>
+      <div class="d-flex">
+        <input type="text" class="form-control " id="name" placeholder="您的姓名" name="name" value="{{user.name}}" />
+        <button onclick="document.getElementById('name').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
+    </div>
+    <div class="mb-3 pt-3">
+      <label for="email" class="form-label">電子郵件<span class="text-danger">*</span></label>
+      <div class="d-flex">
+        <input type="email" class="form-control " id="email" placeholder="您的電子郵件" name="email" value="{{user.email}}"
+          required />
+        <button onclick="document.getElementById('email').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
+    </div>
+    <div class="mb-3 pt-3">
+      <label for="prePassword" class="form-label">原先密碼<span class="text-danger">*</span></label>
+      <div class="d-flex">
+        <input type="password" class="form-control " id="prePassword" placeholder="請輸入密碼" name="prePassword"
+          value="{{user.password}}" required />
+        <button onclick="document.getElementById('prePassword').value = ''" class="btn btn-outline-secondary">X</button>
+      </div>
+    </div>
+    <div class="mb-3 pt-3">
+      <label for="editPassword" class="form-label">修改密碼<span class="text-danger">*</span></label>
+      <div class="d-flex">
+        <input type="password" class="form-control " id="editPassword" placeholder="請修改密碼" name="editPassword"
+          required />
+        <button onclick="document.getElementById('editPassword').value = ''"
+          class="btn btn-outline-secondary">X</button>
+      </div>
+    </div>
+
+    <div class="text-center mb-5">
+      <button type="submit" class="btn btn-primary">
+        編輯完成
+      </button>
+      <a href="/">
+        <button type="button" class="btn btn-outline-secondary">
+          返回首頁
+        </button>
+      </a>
+      {{! 使用type="reset" 可以清除/還原輸入 }}
+      <button type="reset" class="btn btn-outline-danger">重新輸入</button>
+    </div>
+  </form>
+</div>

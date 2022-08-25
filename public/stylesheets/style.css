@@ -4,6 +4,7 @@ header {
 
 body {
   margin-bottom: 80px;
+  height: 850px;
 }
 
 .navbar .navbar-brand {
@@ -26,6 +27,23 @@ body {
   background-size: cover;
   filter: blur(3px);
   margin-bottom: 20px;
+}
+
+.user-container {
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  top: 17%;
+  left: 40%;
+  z-index: 100;
+  border-radius: 50%;
+}
+
+.user {
+  font-size: 100px;
+  position: absolute;
+  top: 17%;
+  left: 25%;
 }
 
 .search-and-sort {
@@ -148,7 +166,7 @@ main {
   align-items: center;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  height: 100vh;
+  height: 100vw;
   margin: -19px 0 50px;
 }
 
@@ -231,13 +249,14 @@ h2 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 21%;
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 520px;
+  min-height: 620px;
   z-index: 100;
+  margin-bottom: 50px;
 }
 
 .create-container {

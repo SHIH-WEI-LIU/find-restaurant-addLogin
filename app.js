@@ -7,6 +7,7 @@ const routes = require('./routes') //引入路由器時，路徑設定為 /route
 const session = require('express-session')//載入session
 const usePassport = require('./config/passport')//載入config/passport
 require('./config/mongoose') //載入mongoose
+const flash = require('connect-flash')   // 引用套件
 const port = process.env.PORT || 3000 //如果在 Heroku 環境則使用 process.env.PORT，否則為本地環境，使用 3000 
 
 const app = express()
@@ -30,10 +31,14 @@ app.use(session({
 }))
 //呼叫 Passport 函式並傳入 app
 usePassport(app)
+//flash
+app.use(flash())
 //設定本地變數(所有"handlebars"都可以使用的變數)
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')  // 從req.flash中拿 success_msg 訊息
+  res.locals.warning_msg = req.flash('warning_msg')  // 從req.flash中拿 warning_msg 訊息
   next()
 })
 

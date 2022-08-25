@@ -1,11 +1,17 @@
 <!-- ./views/index.handlebars -->
+<a href="/users/account">
+  <div class="user-container" style="background-color:rgb(255, 254, 254,0.4) ;">
+    <i class="user fa-solid fa-user" style="color:rgb(0, 0, 0, 0.7);"></i>
+  </div>
+</a>
+
 
 <div class="search-and-sort">
   <!-- search bar -->
-  <div class="container-search search-bar  ">
+  <div class="container-search search-bar">
     <div class="search-bar-outer rounded-pill">
       <div class="search-bar-inner">
-        <form action="/search" >
+        <form action="/search">
           <div class="input-group">
             <h5 class="mt-2">尋找餐廳：</h5>
             <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
@@ -21,8 +27,8 @@
 
   {{!-- sort --}}
   <div class="dropdown sort">
-    <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-      aria-expanded="false">Sort Restaurant
+    <button class="btn btn-danger btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1"
+      data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-arrow-up-z-a"></i>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="/asc">A->Z(Positive order)</a></li>
@@ -40,7 +46,7 @@
       <li><a class="dropdown-item" href="/location">location</a></li>
     </ul>
   </div>
-  
+
 </div>
 
 
