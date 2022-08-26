@@ -85,7 +85,7 @@ router.put('/account', (req, res) => {
     })
   }
   req.flash('success_msg', '你已經修改成功囉！')
-  return User.findOneAndUpdate({ email, prePassword, ...req.body }) //找到對應的資料後整個一起更新
+  return User.findOneAndUpdate({ email, ...req.body }) //找到對應的資料後整個一起更新
     .then(() => res.redirect('/users/login'))
     .catch(error => console.log(error))
 })
