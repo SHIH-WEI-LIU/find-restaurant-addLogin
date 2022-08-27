@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')//引入建立好的 User model
 const passport = require('passport')
+const bcrypt = require('bcryptjs')  // 載入套件
 
 //users登入路由
 router.get('/login', (req, res) => {
