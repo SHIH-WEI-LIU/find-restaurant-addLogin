@@ -5,9 +5,9 @@
     <form class="login-form" action="/users/signUp" method="POST">
       <h1 class="login-h1">Create Account</h1>
       <div class="social-container">
-        <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://myaccount.google.com/" target="_blank" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social"><i class="fab fa-linkedin-in"></i></a>
+        <a href="/auth/facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="/auth/google" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="/auth/line" class="social"><i class="fa-brands fa-line"></i></a>
       </div>
       <span class="login-span mb-3">or use your email for registration</span>
       {{#if errors}}{{>message}} {{/if}}
@@ -24,11 +24,9 @@
     <form class="login-form" action="/users/signIn" method="POST">
       <h1 class="login-h1">Sign in</h1>
       <div class="social-container">
-        <a href="https://www.facebook.com/" target="_blank" class="social login-a"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://myaccount.google.com/" target="_blank" class="social login-a"><i
-            class="fab fa-google-plus-g"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank" class="social login-a"><i
-            class="fab fa-linkedin-in"></i></a>
+        <a href="/auth/facebook" class="social login-a"><i class="fab fa-facebook-f"></i></a>
+        <a href="/auth/google" class="social login-a"><i class="fab fa-google-plus-g"></i></a>
+        <a href="/auth/line" class="social login-a"><i class="fa-brands fa-line"></i></a>
       </div>
       <span class="login-span mb-3">or use your account</span>
       {{#if warning_msg}}{{>message}}
