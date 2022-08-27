@@ -46,11 +46,14 @@ router.post('/signUp', (req, res) => {
         confirmPassword
       })
     }
-    return User.create({
-      name,
-      email,
-      password
-    })
+    return bcrypt
+      .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
+      .then(salt => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
+      .then(hash => User.create({
+        name,
+        email,
+        password: hash // 用雜湊值取代原本的使用者密碼
+      }))
       .then(() => res.redirect('/'))
       .catch(err => console.log(err))
   })
@@ -70,9 +73,9 @@ router.get('/account', (req, res) => {
 })
 //user post
 router.put('/account', (req, res) => {
-  const { name, email, editPassword, prePassword } = req.body
+  const { name, email, password, prePassword } = req.body
   const errors = []
-  if (editPassword === prePassword) {
+  if (password === prePassword) {
     errors.push({ message: '與先前密碼相同！' })
   }
   if (errors.length) {
@@ -80,15 +83,15 @@ router.put('/account', (req, res) => {
       errors,
       name,
       email,
-      editPassword,
+      password,
       prePassword
     })
   }
   req.flash('success_msg', '你已經修改成功囉！')
+
   return User.findOneAndUpdate({ email, ...req.body }) //找到對應的資料後整個一起更新
     .then(() => res.redirect('/users/login'))
     .catch(error => console.log(error))
 })
-
 
 module.exports = router
