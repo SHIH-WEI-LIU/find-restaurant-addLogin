@@ -1,0 +1,19 @@
+{
+  "users": [
+   {
+    "name": "user1",
+    "email": "user1@example.com",
+    "password": "12345678",
+    "restaurantIndexes":[0,1,2]
+  },
+  {
+    "name": "user2",
+    "email": "user2@example.com",
+    "password": "12345678",
+    "restaurantIndexes":[3,4,5]
+  }
+  ]
+}
+
+
+
