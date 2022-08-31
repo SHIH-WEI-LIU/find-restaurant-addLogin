@@ -8,7 +8,7 @@ const Restaurant = require('../../models/restaurant')
 //首頁路由
 router.get('/', (req, res) => {
   const userId = req.user._id
-  Restaurant.find({ userId }) // 取出 userId 裡的所有資料
+  Restaurant.find({ userId })
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .sort({ _id: 'asc' }) //依照建立順序來排列出來
     .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板

@@ -2,9 +2,9 @@ header {
   overflow: hidden;
 }
 
-body {
+.partial-body {
   margin-bottom: 80px;
-  height: 850px;
+  height: 85vw;
 }
 
 .navbar .navbar-brand {
